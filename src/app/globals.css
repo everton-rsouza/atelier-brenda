@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Paleta "Noite minimalista" — azul de Van Gogh + amarelo das estrelas */
+@theme {
+  --color-noite: #0a0f24;
+  --color-noite-2: #111938;
+  --color-noite-3: #1a2450;
+  --color-tinta: #ece8dc;
+  --color-suave: #98a1c4;
+  --color-ouro: #f3c552;
+  --color-ouro-2: #f7dc8c;
+  --color-azul: #3c5aa6;
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-noite);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-ouro);
+  color: var(--color-noite);
+}
+
+/* ---------- Brilho em redemoinho ao passar o mouse na obra ---------- */
+.redemoinho {
+  position: relative;
+  isolation: isolate;
+}
+.redemoinho::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  border-radius: 1.25rem;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgb(243 197 82 / 0.55) 60deg,
+    transparent 120deg,
+    rgb(60 90 166 / 0.6) 200deg,
+    transparent 260deg,
+    rgb(247 220 140 / 0.45) 320deg,
+    transparent 360deg
+  );
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: girar 9s linear infinite;
+}
+.redemoinho:hover::before,
+.redemoinho:focus-visible::before {
+  opacity: 1;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* ---------- Estrela cadente ---------- */
+@keyframes cadente {
+  0% {
+    transform: translate(0, 0) rotate(-28deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-70vw, 38vw) rotate(-28deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Comemoração (chuva de estrelas) ---------- */
+@keyframes estourar {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* ---------- Entrada suave dos elementos ---------- */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.surgir {
+  animation: surgir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
