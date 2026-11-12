@@ -5,7 +5,7 @@ import ImagemObra from "./ImagemObra";
 export default function CartaoObra({ obra, prioridade = false }: { obra: Obra; prioridade?: boolean }) {
   return (
     <Link href={`/obras/${obra.id}`} className="redemoinho group block select-none rounded-xl outline-none">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-noite-2 ring-1 ring-white/5">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-noite-2 ring-1 ring-linha/5">
         <ImagemObra
           obra={obra}
           prioridade={prioridade}

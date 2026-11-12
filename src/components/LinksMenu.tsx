@@ -11,7 +11,7 @@ const links = [
 
 function Lista({ caminho }: { caminho: string | null }) {
   return (
-    <ul className="flex items-center gap-5 text-sm sm:gap-8">
+    <ul className="flex items-center gap-4 text-sm sm:gap-8">
       {links.map((l) => {
         const ativo = !!caminho && l.href !== "#contato" && caminho.startsWith(l.href);
         return (

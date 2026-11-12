@@ -24,6 +24,21 @@ export default function CeuEstrelado({ obraIds }: { obraIds: string[] }) {
     const alvo = { x: 0, y: 0 };
     const atual = { x: 0, y: 0 };
 
+    // Cores do céu vêm do tema (noite/dia) e são relidas quando ele muda
+    const cores = { estrela: "", dourada: "", dia: false };
+    function lerCores() {
+      const css = getComputedStyle(document.documentElement);
+      cores.estrela = css.getPropertyValue("--estrela").trim() || "#e9ecff";
+      cores.dourada = css.getPropertyValue("--estrela-dourada").trim() || "#f7dc8c";
+      cores.dia = document.documentElement.dataset.tema === "dia";
+    }
+    lerCores();
+    const observador = new MutationObserver(() => {
+      lerCores();
+      if (calmo) desenhar(performance.now());
+    });
+    observador.observe(document.documentElement, { attributes: true, attributeFilter: ["data-tema"] });
+
     function criar() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = window.innerWidth;
@@ -70,21 +85,25 @@ export default function CeuEstrelado({ obraIds }: { obraIds: string[] }) {
       ctx.clearRect(0, 0, w, h);
 
       // Redemoinhos bem sutis no céu
-      redemoinho(w * 0.78 + atual.x * 10, h * 0.22 + atual.y * 10, Math.min(w, h) * 0.22, t * 0.05, "rgba(120,150,230,0.07)");
-      redemoinho(w * 0.18 + atual.x * 6, h * 0.62 + atual.y * 6, Math.min(w, h) * 0.16, -t * 0.04, "rgba(243,197,82,0.05)");
+      redemoinho(w * 0.78 + atual.x * 10, h * 0.22 + atual.y * 10, Math.min(w, h) * 0.22, t * 0.05,
+        cores.dia ? "rgba(200,146,26,0.14)" : "rgba(120,150,230,0.07)");
+      redemoinho(w * 0.18 + atual.x * 6, h * 0.62 + atual.y * 6, Math.min(w, h) * 0.16, -t * 0.04,
+        cores.dia ? "rgba(60,90,166,0.09)" : "rgba(243,197,82,0.05)");
 
+      // De dia as estrelas viram uma poeira de pigmento, mais discreta
+      const intensidade = cores.dia ? 0.4 : 1;
       for (const e of estrelas) {
         const brilho = 0.45 + 0.55 * Math.sin(t * e.vel + e.fase) ** 2;
         const x = e.x + atual.x * 28 * e.prof;
         const y = e.y + atual.y * 28 * e.prof;
-        ctx.globalAlpha = brilho * (0.35 + e.prof * 0.65);
-        ctx.fillStyle = e.dourada ? "#f7dc8c" : "#e9ecff";
+        ctx.globalAlpha = brilho * (0.35 + e.prof * 0.65) * intensidade;
+        ctx.fillStyle = e.dourada ? cores.dourada : cores.estrela;
         ctx.beginPath();
         ctx.arc(x, y, e.r, 0, Math.PI * 2);
         ctx.fill();
         if (e.dourada && e.r > 1) {
           // halo das estrelas maiores, como na Noite Estrelada
-          ctx.globalAlpha = brilho * 0.18;
+          ctx.globalAlpha = brilho * 0.18 * intensidade;
           ctx.beginPath();
           ctx.arc(x, y, e.r * 5, 0, Math.PI * 2);
           ctx.fill();
@@ -111,6 +130,7 @@ export default function CeuEstrelado({ obraIds }: { obraIds: string[] }) {
     window.addEventListener("deviceorientation", inclinar);
     return () => {
       cancelAnimationFrame(raf);
+      observador.disconnect();
       window.removeEventListener("resize", criar);
       window.removeEventListener("pointermove", mouse);
       window.removeEventListener("deviceorientation", inclinar);
@@ -147,10 +167,7 @@ export default function CeuEstrelado({ obraIds }: { obraIds: string[] }) {
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-20"
-        style={{
-          background:
-            "radial-gradient(ellipse at 75% 0%, #1b2a66 0%, transparent 55%), radial-gradient(ellipse at 0% 100%, #132048 0%, transparent 50%), #0a0f24",
-        }}
+        style={{ background: "var(--ceu)", transition: "background 0.6s ease" }}
       />
       {cadente && (
         <button

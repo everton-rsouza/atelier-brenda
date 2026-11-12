@@ -30,8 +30,8 @@ export default function Galeria({ obras }: { obras: Obra[] }) {
                 onClick={() => setFiltro(s)}
                 className={`rounded-full border px-4 py-1.5 text-sm transition ${
                   ativo
-                    ? "border-ouro bg-ouro text-noite"
-                    : "border-white/15 text-suave hover:border-ouro/60 hover:text-tinta"
+                    ? "border-ouro bg-ouro text-sobre-ouro"
+                    : "border-linha/15 text-suave hover:border-ouro/60 hover:text-tinta"
                 }`}
               >
                 {s ?? "Todas"}

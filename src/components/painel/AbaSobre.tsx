@@ -162,7 +162,7 @@ export default function AbaSobre() {
               <img src={f.url} alt="" className="aspect-square w-full rounded-lg object-cover" />
               <button
                 onClick={() => removerFoto(f)}
-                className="absolute right-2 top-2 rounded-full bg-noite/80 px-2 py-0.5 text-xs transition hover:text-red-300 sm:opacity-0 sm:group-hover:opacity-100"
+                className="absolute right-2 top-2 rounded-full bg-noite/80 px-2 py-0.5 text-xs transition hover:text-erro sm:opacity-0 sm:group-hover:opacity-100"
                 aria-label="Remover foto"
               >
                 ✕

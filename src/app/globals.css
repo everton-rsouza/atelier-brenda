@@ -1,22 +1,82 @@
 @import "tailwindcss";
 
-/* Paleta "Noite minimalista" — azul de Van Gogh + amarelo das estrelas */
-@theme {
-  --color-noite: #0a0f24;
-  --color-noite-2: #111938;
-  --color-noite-3: #1a2450;
-  --color-tinta: #ece8dc;
-  --color-suave: #98a1c4;
-  --color-ouro: #f3c552;
-  --color-ouro-2: #f7dc8c;
+/* =====================================================================
+   Temas
+   Noite (padrão): azul de Van Gogh + amarelo das estrelas
+   Dia: papel de aquarela, tinta azul-noite e ouro mais profundo
+   Os nomes ("noite", "tinta"…) são papéis: fundo, texto, destaque.
+   ===================================================================== */
+:root {
+  --noite: #0a0f24; /* fundo */
+  --noite-2: #111938; /* superfícies */
+  --noite-3: #1a2450;
+  --tinta: #ece8dc; /* texto principal */
+  --suave: #98a1c4; /* texto secundário */
+  --ouro: #f3c552; /* destaque */
+  --ouro-2: #f7dc8c; /* destaque ao passar o mouse */
+  --sobre-ouro: #0a0f24; /* texto em cima do dourado */
+  --linha: #ffffff; /* bordas (usadas sempre translúcidas) */
+  --erro: #fca5a5;
+  --estrela: #e9ecff;
+  --estrela-dourada: #f7dc8c;
+  --ceu:
+    radial-gradient(ellipse at 75% 0%, #1b2a66 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, #132048 0%, transparent 50%), #0a0f24;
+  color-scheme: dark;
+}
+
+:root[data-tema="dia"] {
+  --noite: #f6f1e4;
+  --noite-2: #efe8d6;
+  --noite-3: #e5dcc5;
+  --tinta: #182044;
+  --suave: #5b6385;
+  --ouro: #b98309;
+  --ouro-2: #8f6400;
+  --sobre-ouro: #fffaf0;
+  --linha: #182044;
+  --erro: #b42318;
+  --estrela: #3c5aa6;
+  --estrela-dourada: #c8921a;
+  --ceu:
+    radial-gradient(ellipse at 80% 0%, #fbe7b0 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, #dfe6f5 0%, transparent 55%), #f6f1e4;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-noite: var(--noite);
+  --color-noite-2: var(--noite-2);
+  --color-noite-3: var(--noite-3);
+  --color-tinta: var(--tinta);
+  --color-suave: var(--suave);
+  --color-ouro: var(--ouro);
+  --color-ouro-2: var(--ouro-2);
+  --color-sobre-ouro: var(--sobre-ouro);
+  --color-linha: var(--linha);
+  --color-erro: var(--erro);
   --color-azul: #3c5aa6;
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+/* Ícones do botão de tema: mostra só o do tema oposto */
+:root[data-tema="dia"] .so-noite,
+:root:not([data-tema="dia"]) .so-dia {
+  display: none;
+}
+
+/* Transição suave ao trocar de tema */
+:root.trocando-tema,
+:root.trocando-tema * {
+  transition:
+    background-color 0.6s ease,
+    border-color 0.6s ease,
+    color 0.6s ease !important;
+}
+
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 

@@ -48,7 +48,7 @@ async function DetalheObra({ id }: { id: string }) {
       </Link>
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[3fr_2fr] lg:items-start">
-        <div className="surgir relative aspect-[3/4] overflow-hidden rounded-xl bg-noite-2 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/5 lg:aspect-auto lg:h-[78vh]">
+        <div className="surgir relative aspect-[3/4] overflow-hidden rounded-xl bg-noite-2 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-linha/5 lg:aspect-auto lg:h-[78vh]">
           <ImagemObra obra={obra} prioridade sizes="(min-width: 1024px) 60vw, 95vw" className="lg:!object-contain" />
         </div>
 
@@ -58,7 +58,7 @@ async function DetalheObra({ id }: { id: string }) {
             <p className="mt-6 whitespace-pre-line text-lg leading-relaxed text-tinta/85">{obra.descricao}</p>
           )}
           {ficha.length > 0 && (
-            <dl className="mt-10 divide-y divide-white/5 border-y border-white/5">
+            <dl className="mt-10 divide-y divide-linha/5 border-y border-linha/5">
               {ficha.map(([rotulo, valor]) => (
                 <div key={String(rotulo)} className="flex justify-between gap-4 py-3 text-sm">
                   <dt className="text-suave">{rotulo}</dt>
@@ -69,7 +69,7 @@ async function DetalheObra({ id }: { id: string }) {
           )}
           <a
             href="#contato"
-            className="mt-10 inline-block rounded-full border border-ouro/60 px-6 py-2.5 text-sm text-ouro-2 transition hover:bg-ouro hover:text-noite"
+            className="mt-10 inline-block rounded-full border border-ouro/60 px-6 py-2.5 text-sm text-ouro-2 transition hover:bg-ouro hover:text-sobre-ouro"
           >
             Tenho interesse nesta obra
           </a>
@@ -77,7 +77,7 @@ async function DetalheObra({ id }: { id: string }) {
       </div>
 
       {obras.length > 1 && (
-        <nav className="mt-20 flex justify-between gap-4 border-t border-white/5 pt-8 text-sm">
+        <nav className="mt-20 flex justify-between gap-4 border-t border-linha/5 pt-8 text-sm">
           <Link href={`/obras/${anterior.id}`} className="group max-w-[45%]">
             <span className="text-suave">← Anterior</span>
             <span className="block truncate font-display text-xl group-hover:text-ouro-2">{anterior.titulo}</span>

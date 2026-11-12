@@ -46,7 +46,7 @@ export default function SeletorImagem({
         }}
         className={`group relative flex w-full items-center justify-center overflow-hidden border-2 border-dashed transition ${
           redonda ? "aspect-square rounded-full" : "aspect-[3/4] rounded-2xl"
-        } ${sobre ? "border-ouro bg-ouro/10" : "border-white/15 bg-noite-2/60 hover:border-ouro/50"}`}
+        } ${sobre ? "border-ouro bg-ouro/10" : "border-linha/15 bg-noite-2/60 hover:border-ouro/50"}`}
       >
         {previa ? (
           <>

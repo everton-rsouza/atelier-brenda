@@ -33,7 +33,7 @@ export default function BotaoEditar() {
   return (
     <Link
       href={destino.href}
-      className="surgir fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border border-ouro/40 bg-noite-2/90 py-2.5 pl-4 pr-5 text-sm text-ouro-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)] backdrop-blur transition hover:bg-ouro hover:text-noite"
+      className="surgir fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border border-ouro/40 bg-noite-2/90 py-2.5 pl-4 pr-5 text-sm text-ouro-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)] backdrop-blur transition hover:bg-ouro hover:text-sobre-ouro"
       style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <span aria-hidden="true">✎</span>

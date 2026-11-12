@@ -104,16 +104,16 @@ export default function FormObra({
 
         <div className="flex flex-wrap gap-6 pt-2 text-sm">
           <label className="flex items-center gap-2">
-            <input type="checkbox" name="publicado" defaultChecked={obra?.publicado ?? true} className="h-4 w-4 accent-[#f3c552]" />
+            <input type="checkbox" name="publicado" defaultChecked={obra?.publicado ?? true} className="h-4 w-4 accent-ouro" />
             Visível no site
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" name="destaque" defaultChecked={obra?.destaque ?? false} className="h-4 w-4 accent-[#f3c552]" />
+            <input type="checkbox" name="destaque" defaultChecked={obra?.destaque ?? false} className="h-4 w-4 accent-ouro" />
             ★ Destaque na página inicial
           </label>
         </div>
 
-        {erro && <p className="text-sm text-red-300">{erro}</p>}
+        {erro && <p className="text-sm text-erro">{erro}</p>}
 
         <div className="flex flex-wrap gap-3 pt-4">
           <button disabled={salvando} className={botaoPrincipal}>

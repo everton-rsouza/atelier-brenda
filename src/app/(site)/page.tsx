@@ -33,13 +33,13 @@ export default async function Inicio() {
         <div className="surgir mt-12 flex flex-wrap gap-4" style={{ animationDelay: "400ms" }}>
           <Link
             href="/obras"
-            className="rounded-full bg-ouro px-7 py-3 font-medium text-noite transition hover:bg-ouro-2 hover:shadow-[0_0_30px_rgba(243,197,82,0.45)]"
+            className="rounded-full bg-ouro px-7 py-3 font-medium text-sobre-ouro transition hover:bg-ouro-2 hover:shadow-[0_0_30px_rgba(243,197,82,0.45)]"
           >
             Ver as obras
           </Link>
           <Link
             href="/historia"
-            className="rounded-full border border-white/20 px-7 py-3 transition hover:border-ouro/70 hover:text-ouro-2"
+            className="rounded-full border border-linha/20 px-7 py-3 transition hover:border-ouro/70 hover:text-ouro-2"
           >
             Conhecer a história
           </Link>

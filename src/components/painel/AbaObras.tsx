@@ -107,7 +107,7 @@ export default function AbaObras({ obraInicial }: { obraInicial?: string | null 
       {obras?.length === 0 && (
         <button
           onClick={() => setEditando("nova")}
-          className="mt-8 flex w-full flex-col items-center rounded-2xl border-2 border-dashed border-white/15 py-20 text-suave transition hover:border-ouro/50 hover:text-ouro-2"
+          className="mt-8 flex w-full flex-col items-center rounded-2xl border-2 border-dashed border-linha/15 py-20 text-suave transition hover:border-ouro/50 hover:text-ouro-2"
         >
           <span className="text-4xl">✦</span>
           <span className="mt-3">Comece postando a primeira obra</span>
@@ -129,7 +129,7 @@ export default function AbaObras({ obraInicial }: { obraInicial?: string | null 
               if (arrastando.current !== null) mover(arrastando.current, i);
               arrastando.current = null;
             }}
-            className={`flex items-center gap-3 rounded-xl border border-white/10 bg-noite-2/70 p-3 backdrop-blur transition hover:border-white/20 sm:gap-4 ${
+            className={`flex items-center gap-3 rounded-xl border border-linha/10 bg-noite-2/70 p-3 backdrop-blur transition hover:border-linha/20 sm:gap-4 ${
               o.publicado ? "" : "opacity-60"
             }`}
           >
@@ -153,7 +153,7 @@ export default function AbaObras({ obraInicial }: { obraInicial?: string | null 
             <button
               onClick={() => alternar(o, "destaque")}
               title={o.destaque ? "Em destaque na página inicial" : "Colocar em destaque"}
-              className={`text-xl transition ${o.destaque ? "text-ouro drop-shadow-[0_0_6px_rgba(243,197,82,.8)]" : "text-white/20 hover:text-ouro/70"}`}
+              className={`text-xl transition ${o.destaque ? "text-ouro drop-shadow-[0_0_6px_rgba(243,197,82,.8)]" : "text-linha/20 hover:text-ouro/70"}`}
             >
               ★
             </button>
@@ -166,11 +166,11 @@ export default function AbaObras({ obraInicial }: { obraInicial?: string | null 
             </button>
             {confirmarExclusao === o.id ? (
               <span className="flex items-center gap-2 text-xs">
-                <button onClick={() => excluir(o)} className="rounded-full bg-red-400/90 px-3 py-1 text-noite">Excluir</button>
+                <button onClick={() => excluir(o)} className="rounded-full bg-red-400/90 px-3 py-1 text-sobre-ouro">Excluir</button>
                 <button onClick={() => setConfirmarExclusao(null)} className="text-suave">Não</button>
               </span>
             ) : (
-              <button onClick={() => setConfirmarExclusao(o.id)} className="text-suave hover:text-red-300" aria-label="Excluir obra">
+              <button onClick={() => setConfirmarExclusao(o.id)} className="text-suave hover:text-erro" aria-label="Excluir obra">
                 ✕
               </button>
             )}

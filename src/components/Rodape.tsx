@@ -11,7 +11,7 @@ function linkWhatsapp(v: string) {
 
 export default function Rodape({ site }: { site: Site }) {
   return (
-    <footer id="contato" className="mt-32 border-t border-white/5">
+    <footer id="contato" className="mt-32 border-t border-linha/5">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-2">
         <div>
           <p className="font-display text-4xl italic">Vamos conversar?</p>

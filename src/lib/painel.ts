@@ -65,7 +65,7 @@ export function celebrar(x = window.innerWidth / 2, y = window.innerHeight / 2) 
       zIndex: "100",
       pointerEvents: "none",
       fontSize: `${12 + Math.random() * 18}px`,
-      color: Math.random() < 0.7 ? "#f3c552" : "#e9ecff",
+      color: Math.random() < 0.7 ? "var(--ouro)" : "var(--estrela)",
       textShadow: "0 0 10px rgba(243,197,82,.8)",
       animation: `estourar ${0.9 + Math.random() * 0.7}s cubic-bezier(.15,.7,.3,1) forwards`,
     });

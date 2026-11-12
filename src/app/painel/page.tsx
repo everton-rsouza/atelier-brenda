@@ -6,6 +6,7 @@ import type { Session } from "@supabase/supabase-js";
 import { clienteNavegador, supabaseConfigurado } from "@/lib/supabase";
 import AbaObras from "@/components/painel/AbaObras";
 import AbaSobre from "@/components/painel/AbaSobre";
+import BotaoTema from "@/components/BotaoTema";
 import { campo, botaoPrincipal } from "@/components/painel/estilos";
 
 export default function Painel() {
@@ -45,7 +46,7 @@ function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-5">
-      <form onSubmit={entrar} className="surgir w-full max-w-sm rounded-2xl border border-white/10 bg-noite-2/80 p-8 backdrop-blur">
+      <form onSubmit={entrar} className="surgir w-full max-w-sm rounded-2xl border border-linha/10 bg-noite-2/80 p-8 backdrop-blur">
         <p className="text-center text-3xl text-ouro">☾</p>
         <h1 className="mt-2 text-center font-display text-4xl italic">Bem-vinda ao ateliê</h1>
         <p className="mt-2 text-center text-sm text-suave">Entre para cuidar das suas obras.</p>
@@ -57,7 +58,7 @@ function Login() {
           Senha
           <input type="password" required autoComplete="current-password" value={senha} onChange={(e) => setSenha(e.target.value)} className={campo} />
         </label>
-        {erro && <p className="mt-4 text-sm text-red-300">{erro}</p>}
+        {erro && <p className="mt-4 text-sm text-erro">{erro}</p>}
         <button disabled={entrando} className={`${botaoPrincipal} mt-6 w-full`}>
           {entrando ? "Entrando…" : "Entrar"}
         </button>
@@ -90,6 +91,7 @@ function Mesa({ email }: { email: string }) {
           <h1 className="font-display text-4xl italic">{saudacao} ✦</h1>
         </div>
         <div className="flex items-center gap-4 text-sm">
+          <BotaoTema />
           <Link href="/" target="_blank" className="text-suave hover:text-ouro-2">Ver o site ↗</Link>
           <button onClick={() => clienteNavegador().auth.signOut()} className="text-suave hover:text-ouro-2" title={email}>
             Sair
@@ -97,7 +99,7 @@ function Mesa({ email }: { email: string }) {
         </div>
       </header>
 
-      <nav className="mt-8 flex gap-2 border-b border-white/10">
+      <nav className="mt-8 flex gap-2 border-b border-linha/10">
         {([
           ["obras", "Obras"],
           ["sobre", "História & contato"],
