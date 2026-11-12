@@ -9,10 +9,11 @@ export async function generateMetadata({ params }: PageProps<"/obras/[id]">): Pr
   const { id } = await params;
   const obra = await getObra(id);
   if (!obra) return { title: "Obra não encontrada" };
+  const descricao = obra.descricao ?? [obra.tecnica, obra.ano].filter(Boolean).join(" · ");
   return {
     title: obra.titulo,
-    description: obra.descricao ?? [obra.tecnica, obra.ano].filter(Boolean).join(" · "),
-    openGraph: obra.imagem_url ? { images: [obra.imagem_url] } : undefined,
+    description: descricao,
+    openGraph: { type: "article", title: obra.titulo, description: descricao, url: `/obras/${obra.id}` },
   };
 }
 

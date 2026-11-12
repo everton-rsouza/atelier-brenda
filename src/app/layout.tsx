@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Geist } from "next/font/google";
 import CeuEstrelado from "@/components/CeuEstrelado";
 import Visitas from "@/components/Visitas";
 import { getObras, getSite } from "@/lib/data";
+import { SITE_URL } from "@/lib/compartilhar";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -18,9 +19,19 @@ const scriptTema = `try{if(localStorage.getItem("tema")==="dia")document.documen
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSite();
+  const descricao = site.frase ?? `Obras e história da artista ${site.nome}.`;
   return {
+    metadataBase: new URL(SITE_URL),
     title: { default: `Atelier ${site.nome}`, template: `%s · Atelier ${site.nome}` },
-    description: site.frase ?? `Obras e história da artista ${site.nome}.`,
+    description: descricao,
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      siteName: `Atelier ${site.nome}`,
+      title: `Atelier ${site.nome}`,
+      description: descricao,
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 
