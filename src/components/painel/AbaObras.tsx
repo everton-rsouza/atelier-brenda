@@ -7,9 +7,10 @@ import type { Obra } from "@/lib/types";
 import FormObra from "./FormObra";
 import { botaoPrincipal } from "./estilos";
 
-export default function AbaObras() {
+export default function AbaObras({ obraInicial }: { obraInicial?: string | null }) {
   const [obras, setObras] = useState<Obra[] | null>(null);
   const [editando, setEditando] = useState<Obra | "nova" | null>(null);
+  const abriuInicial = useRef(false);
   const [confirmarExclusao, setConfirmarExclusao] = useState<string | null>(null);
   const [aviso, setAviso] = useState("");
   const arrastando = useRef<number | null>(null);
@@ -22,7 +23,13 @@ export default function AbaObras() {
       .order("created_at", { ascending: false });
     if (error) setAviso(`Erro ao carregar: ${error.message}`);
     setObras(data ?? []);
-  }, []);
+    // Veio do botão "Editar esta obra" no site: abre a obra direto
+    if (obraInicial && !abriuInicial.current) {
+      abriuInicial.current = true;
+      const alvo = data?.find((o) => o.id === obraInicial);
+      if (alvo) setEditando(alvo);
+    }
+  }, [obraInicial]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect

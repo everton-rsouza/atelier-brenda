@@ -36,7 +36,7 @@ export default function AbaSobre() {
       let foto_url = site?.foto_url ?? null;
       if (novaFotoPerfil) foto_url = await enviarImagem(novaFotoPerfil, "atelier");
       const dados = {
-        nome: texto("nome") ?? "Brenda",
+        nome: texto("nome") ?? "Brenda Brito",
         frase: texto("frase"),
         historia: texto("historia"),
         email: texto("email"),

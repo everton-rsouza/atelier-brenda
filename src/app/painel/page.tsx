@@ -70,7 +70,13 @@ function Login() {
 }
 
 function Mesa({ email }: { email: string }) {
-  const [aba, setAba] = useState<"obras" | "sobre">("obras");
+  // Atalhos vindos do botão "Editar" do site: ?aba=sobre ou ?obra=<id>
+  const [atalho] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.size) window.history.replaceState(null, "", "/painel");
+    return { aba: p.get("aba"), obra: p.get("obra") };
+  });
+  const [aba, setAba] = useState<"obras" | "sobre">(atalho.aba === "sobre" ? "sobre" : "obras");
   const saudacao = (() => {
     const h = new Date().getHours();
     return h < 5 ? "Boa madrugada" : h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite";
@@ -108,7 +114,7 @@ function Mesa({ email }: { email: string }) {
         ))}
       </nav>
 
-      <div className="mt-8">{aba === "obras" ? <AbaObras /> : <AbaSobre />}</div>
+      <div className="mt-8">{aba === "obras" ? <AbaObras obraInicial={atalho.obra} /> : <AbaSobre />}</div>
     </div>
   );
 }

@@ -26,9 +26,17 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Seleção de texto discreta: um véu dourado translúcido, sem trocar a cor do texto */
 ::selection {
-  background: var(--color-ouro);
-  color: var(--color-noite);
+  background: rgb(243 197 82 / 0.28);
+  color: inherit;
+}
+
+/* Botões e elementos decorativos não são selecionados sem querer ao clicar/arrastar */
+button,
+[aria-hidden="true"] {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ---------- Brilho em redemoinho ao passar o mouse na obra ---------- */

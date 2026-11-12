@@ -161,7 +161,7 @@ export default function CeuEstrelado({ obraIds }: { obraIds: string[] }) {
           title="Pegue a estrela cadente para ver uma obra surpresa ✨"
           aria-label="Estrela cadente: ver uma obra surpresa"
           className="fixed z-40 h-6 w-40 cursor-pointer"
-          style={{ top: `${cadente.top}%`, left: `${cadente.left}%`, animation: "cadente 2.6s ease-in forwards" }}
+          style={{ top: `${cadente.top}%`, left: `${cadente.left}%`, animation: "cadente 3.8s ease-in forwards" }}
         >
           <span className="absolute left-0 top-1/2 block h-[2px] w-full -translate-y-1/2 rounded-full bg-gradient-to-r from-ouro-2 via-ouro-2/60 to-transparent" />
           <span className="absolute left-0 top-1/2 block h-2 w-2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_4px_rgba(247,220,140,0.9)]" />

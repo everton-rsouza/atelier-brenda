@@ -8,7 +8,7 @@ export default function Cabecalho({ nome }: { nome: string }) {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <Link href="/" className="group flex items-baseline gap-2">
           <span className="text-[0.65rem] uppercase tracking-[0.35em] text-suave">Atelier</span>
-          <span className="font-display text-2xl italic text-tinta transition-colors group-hover:text-ouro-2">
+          <span className="whitespace-nowrap font-display text-xl italic text-tinta transition-colors group-hover:text-ouro-2 sm:text-2xl">
             {nome}
           </span>
           <span className="text-ouro transition-transform duration-700 group-hover:rotate-[360deg]">✦</span>

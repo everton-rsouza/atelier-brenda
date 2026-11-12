@@ -14,11 +14,16 @@ export default async function Inicio() {
       <section className="mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-center px-5 py-20 sm:px-8">
         <p className="surgir text-xs uppercase tracking-[0.5em] text-suave">Atelier</p>
         <h1
-          className="surgir mt-4 font-display text-[clamp(4.5rem,16vw,11rem)] font-medium italic leading-[0.85] text-tinta"
+          className="surgir mt-4 font-display text-[clamp(4rem,13vw,9.5rem)] font-medium italic leading-[0.9] text-tinta"
           style={{ animationDelay: "120ms" }}
         >
-          {site.nome}
-          <span className="not-italic text-ouro">.</span>
+          {/* Cada palavra do nome em uma linha: "Brenda / Brito." */}
+          {site.nome.split(/\s+/).map((palavra, i, todas) => (
+            <span key={i} className={`block ${i > 0 ? "pl-[0.6em]" : ""}`}>
+              {palavra}
+              {i === todas.length - 1 && <span className="not-italic text-ouro">.</span>}
+            </span>
+          ))}
         </h1>
         {site.frase && (
           <p className="surgir mt-8 max-w-md text-lg text-suave sm:text-xl" style={{ animationDelay: "260ms" }}>

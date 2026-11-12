@@ -30,7 +30,7 @@ Abra http://localhost:3000. Sem o Supabase configurado, o site mostra **obras de
    (email + senha, marque *Auto Confirm User*).
 4. **Desative novos cadastros** para ninguém mais criar conta:
    **Authentication → Sign In / Providers → desmarque "Allow new users to sign up"**.
-5. Em **Project Settings → API**, copie a *Project URL* e a chave *anon public*.
+5. Em **Project Settings → API**, copie a *Project URL* e a *publishable key*.
 6. Na pasta do projeto, copie `.env.example` para `.env.local` e cole os valores.
 7. Reinicie o `npm run dev` e entre em http://localhost:3000/painel ✦
 

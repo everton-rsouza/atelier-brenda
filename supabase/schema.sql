@@ -1,5 +1,5 @@
 -- =====================================================================
--- Atelier Brenda — estrutura do banco
+-- Atelier Brenda Brito — estrutura do banco
 -- Cole este arquivo inteiro no Supabase: SQL Editor → New query → Run
 -- =====================================================================
 
@@ -22,7 +22,7 @@ create table if not exists public.obras (
 -- ---------- Configurações do site (uma linha só) ----------
 create table if not exists public.site (
   id         int primary key default 1 check (id = 1),
-  nome       text not null default 'Brenda',
+  nome       text not null default 'Brenda Brito',
   frase      text default 'Pinturas, silêncio e céus estrelados.',
   historia   text default '',
   foto_url   text,

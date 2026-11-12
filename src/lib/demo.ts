@@ -15,7 +15,7 @@ export const obrasDemo: Obra[] = [
 ];
 
 export const siteDemo: Site = {
-  nome: "Brenda",
+  nome: "Brenda Brito",
   frase: "Pinturas, silêncio e céus estrelados.",
   historia:
     "Este é um texto de exemplo. Aqui a Brenda vai contar a própria história: como começou a pintar, o que a inspira, por que o minimalismo — e por que a Noite Estrelada nunca saiu da cabeça dela.\n\nTudo isso é editado direto pelo painel, sem mexer em código.",
